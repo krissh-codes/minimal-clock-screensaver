@@ -19,9 +19,16 @@ export const ToggleButton = styled(IconButton)<{ dark: boolean }>`
     display: grid;
     place-content: center;
     color: ${ ({ dark }) => (dark ? '#f9ffd6' : '#003b88') };
-    transition: color 0.4s;
+    filter: brightness(0.8);
+    opacity: 0.8;
+    transition: all 0.4s;
     
     img {
         height: 1.2rem;
+    }
+    
+    &:hover {
+        opacity: 1;
+        filter: brightness(1);
     }
 `;

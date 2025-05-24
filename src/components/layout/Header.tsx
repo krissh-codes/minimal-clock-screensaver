@@ -9,7 +9,7 @@ export const Header = styled.header<{isZen: boolean}>`
     justify-content: flex-end;
     align-items: center;
     padding: 2rem;
-    gap: 1.4rem;
+    gap: 1rem;
     opacity: ${({ isZen }) => (isZen ? 0 : 1)};
     
     transition: all 0.4s;
