@@ -9,3 +9,7 @@
 body {
     font-family: 'Manrope', sans-serif;
 }
+
+.zen {
+    opacity: .5;
+}
