@@ -47,7 +47,7 @@ export default function ThemeClock() {
         <ThemedCenterContainer $dark={isDark}>
             <Header $isZen={isZen}>
                 <ToggleButton onClick={toggleZen} $dark={isDark}>
-                    <img src={isZen ? zen : zen_off} alt="icon" />
+                    <img src={isZen ? zen_off : zen} alt="icon" />
                 </ToggleButton>
                 <ToggleButton onClick={toggleDarkTheme} $dark={isDark}>
                     <img src={isDark ? dark_mode : light_mode} alt="icon" />
