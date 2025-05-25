@@ -25,7 +25,7 @@ export default function ThemeClock() {
             }
             return !isAlreadyEnabled;
         });
-    }
+    };
 
     const toggleFullScreen = () => {
         setFullScreen(prevMode => {
@@ -44,23 +44,23 @@ export default function ThemeClock() {
     });
 
     return (
-        <ThemedCenterContainer dark={ isDark }>
-            <Header isZen={isZen}>
-                <ToggleButton onClick={ toggleZen } dark={ isDark }>
-                    <img src={ isZen ? zen : zen_off } alt="icon" />
+        <ThemedCenterContainer $dark={isDark}>
+            <Header $isZen={isZen}>
+                <ToggleButton onClick={toggleZen} $dark={isDark}>
+                    <img src={isZen ? zen : zen_off} alt="icon" />
                 </ToggleButton>
-                <ToggleButton onClick={ toggleDarkTheme } dark={ isDark }>
-                    <img src={ isDark ? dark_mode : light_mode } alt="icon" />
+                <ToggleButton onClick={toggleDarkTheme} $dark={isDark}>
+                    <img src={isDark ? dark_mode : light_mode} alt="icon" />
                 </ToggleButton>
-                <ToggleButton onClick={ toggleFullScreen } dark={ isDark }>
-                    <img src={ isFullScreen ? minimize : maximize } alt="icon" />
+                <ToggleButton onClick={toggleFullScreen} $dark={isDark}>
+                    <img src={isFullScreen ? minimize : maximize} alt="icon" />
                 </ToggleButton>
             </Header>
 
-            <AnalogueClock isDark={ isDark } time={ time } />
-            <DigitalClockLayout>{ time.toLocaleTimeString('en-us') }</DigitalClockLayout>
-            <CalendarLayout dark={ isDark }>
-                { days[time.getDay()] }, { months[time.getMonth()] } <p>{ time.getDate() }</p>
+            <AnalogueClock $dark={isDark} $time={time} />
+            <DigitalClockLayout>{time.toLocaleTimeString('en-us')}</DigitalClockLayout>
+            <CalendarLayout $dark={isDark}>
+                {days[time.getDay()]}, {months[time.getMonth()]} <p>{time.getDate()}</p>
             </CalendarLayout>
         </ThemedCenterContainer>
     );

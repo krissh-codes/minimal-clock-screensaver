@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../constants';
 
-export const CalendarLayout = styled.div<{ dark: boolean }>`
+export const CalendarLayout = styled.div<{ $dark: boolean }>`
     font-size: 1rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -15,9 +15,9 @@ export const CalendarLayout = styled.div<{ dark: boolean }>`
         font-size: 0.8rem;
         text-align: center;
         border-radius: 50%;
-        color: ${ colors.contrast.primary };
-        background-color: ${ ({ dark }) => (dark ? colors.contrast.primary : colors.darkSlate) };
-        color: ${ ({ dark }) => (!dark ? colors.lightSlate : colors.darkSlate) };
+        color: ${colors.contrast.primary};
+        background-color: ${({ $dark }) => ($dark ? colors.contrast.primary : colors.darkSlate)};
+        color: ${({ $dark }) => (!$dark ? colors.lightSlate : colors.darkSlate)};
         display: inline-flex;
         align-items: center;
         justify-content: center;

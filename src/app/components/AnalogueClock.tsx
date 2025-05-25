@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 import { colors } from '../../constants';
 
-export function AnalogueClock({ isDark, time }: { isDark: boolean; time: Date; }) {
+export function AnalogueClock({ $dark, $time }: { $dark: boolean; $time: Date; }) {
     return (
-        <AnalogueClockContainer dark={ isDark }>
-            <HourNeedle dark={ isDark } hour={ time.getHours() } minute={ time.getMinutes() } />
-            <MinuteNeedle dark={ isDark } minute={ time.getMinutes() } />
-            <SecondNeedle dark={ isDark } second={ time.getSeconds() } />
+        <AnalogueClockContainer $dark={$dark}>
+            <HourNeedle $dark={$dark} $hour={$time.getHours()} $minute={$time.getMinutes()} />
+            <MinuteNeedle $dark={$dark} $minute={$time.getMinutes()} />
+            <SecondNeedle $dark={$dark} $second={$time.getSeconds()} />
         </AnalogueClockContainer>
     );
 }
 
-const AnalogueClockContainer = styled.div<{ dark: boolean }>`
+const AnalogueClockContainer = styled.div<{ $dark: boolean }>`
     width: 25rem;
     height: 25rem;
     border-radius: 50%;
@@ -21,44 +21,44 @@ const AnalogueClockContainer = styled.div<{ dark: boolean }>`
     transition: all 0.3s;
 `;
 
-const HourNeedle = styled.div<{ dark: boolean; hour: number; minute: number }>`
+const HourNeedle = styled.div<{ $dark: boolean; $hour: number; $minute: number }>`
     width: 8rem;
     height: 4px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: left;
-    background-color: ${ ({ dark }) => (dark ? colors.contrast.primary : colors.darkSlate) };
+    background-color: ${({ $dark }) => ($dark ? colors.contrast.primary : colors.darkSlate)};
     transform: rotate(
-            ${ ({ hour, minute }) => {
-                const temp = hour >= 12 ? hour - 12 : hour;
-                return temp * 30 + minute * 0.5;
-            } }deg
+            ${({ $hour, $minute }) => {
+                const temp = $hour >= 12 ? $hour - 12 : $hour;
+                return temp * 30 + $minute * 0.5;
+            }}deg
     );
     transition: all 0.3s;
 `;
 
-const MinuteNeedle = styled.div<{ dark: boolean; minute: number }>`
+const MinuteNeedle = styled.div<{ $dark: boolean; $minute: number }>`
     width: 11rem;
     height: 3px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: left;
-    background-color: ${ ({ dark }) => (dark ? colors.contrast.primary : colors.darkSlate) };
-    transform: rotate(${ ({ minute }) => minute * 6 }deg);
+    background-color: ${({ $dark }) => ($dark ? colors.contrast.primary : colors.darkSlate)};
+    transform: rotate(${({ $minute }) => $minute * 6}deg);
     transition: all 0.3s;
 `;
 
-const SecondNeedle = styled.div<{ dark: boolean; second: number }>`
+const SecondNeedle = styled.div<{ $dark: boolean; $second: number }>`
     width: 11rem;
     height: 3px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform-origin: left;
-    background-color: ${ colors.primary };
-    transform: rotate(${ ({ second }) => second * 6 }deg);
+    background-color: ${colors.primary};
+    transform: rotate(${({ $second }) => $second * 6}deg);
     transition: all 0.3s;
 
     &::before {
@@ -69,8 +69,8 @@ const SecondNeedle = styled.div<{ dark: boolean; second: number }>`
         transform: translate(-50%, -50%);
         width: 10px;
         height: 10px;
-        background-color: ${ ({ dark }) => (dark ? colors.contrast.primary : colors.darkSlate) };
-        border: 3px solid ${ colors.primary };
+        background-color: ${({ $dark }) => ($dark ? colors.contrast.primary : colors.darkSlate)};
+        border: 3px solid ${colors.primary};
         border-radius: 50%;
         transition: all 0.3s;
     }
