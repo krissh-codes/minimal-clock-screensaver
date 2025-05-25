@@ -22,6 +22,7 @@ export const ToggleButton = styled(IconButton)<{ $dark: boolean }>`
     filter: brightness(0.8);
     opacity: 0.8;
     transition: all 0.4s;
+    transform: scale(1);
     
     img {
         height: 1.2rem;
@@ -29,6 +30,11 @@ export const ToggleButton = styled(IconButton)<{ $dark: boolean }>`
 
     &:hover {
         opacity: 1;
+        transform: scale(1.06);
         filter: brightness(1);
+    }
+    
+    &:active {
+        transform: scale(0.94);
     }
 `;
