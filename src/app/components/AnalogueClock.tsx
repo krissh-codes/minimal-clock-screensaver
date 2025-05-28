@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../constants';
 
@@ -7,11 +8,17 @@ export function AnalogueClock({ $dark, time }: { $dark: boolean; time: Date; }) 
     const second = time.getSeconds();
     const hoursRotation = (hour >= 12 ? hour - 12 : hour) * 30 + minute * 0.5;
 
+    const [smoothedSecond, setSmoothedSecond] = useState(second);
+
+    useEffect(() => {
+        setSmoothedSecond(curr => curr + 1);
+    }, [time]);
+
     return (
         <AnalogueClockContainer $dark={$dark}>
             <HourNeedle $dark={$dark} style={{transform: `rotate(${hoursRotation}deg)`}} />
-            <SecondNeedle $dark={$dark} style={{transform: `rotate(${second * 6}deg)`}} />
             <MinuteNeedle $dark={$dark} style={{transform: `rotate(${minute * 6}deg)`}} />
+            <SecondNeedle $dark={$dark} style={{transform: `rotate(${smoothedSecond * 6}deg)`}} />
         </AnalogueClockContainer>
     );
 }
