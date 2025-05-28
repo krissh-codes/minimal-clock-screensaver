@@ -57,7 +57,7 @@ export default function ThemeClock() {
                 </ToggleButton>
             </Header>
 
-            <AnalogueClock $dark={isDark} $time={time} />
+            <AnalogueClock $dark={isDark} time={time} />
             <DigitalClockLayout>{time.toLocaleTimeString('en-us')}</DigitalClockLayout>
             <CalendarLayout $dark={isDark}>
                 {days[time.getDay()]}, {months[time.getMonth()]} <p>{time.getDate()}</p>
