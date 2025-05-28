@@ -10,8 +10,8 @@ export function AnalogueClock({ $dark, time }: { $dark: boolean; time: Date; }) 
     return (
         <AnalogueClockContainer $dark={$dark}>
             <HourNeedle $dark={$dark} style={{transform: `rotate(${hoursRotation}deg)`}} />
-            <MinuteNeedle $dark={$dark} style={{transform: `rotate(${hoursRotation}deg)`}} />
             <SecondNeedle $dark={$dark} style={{transform: `rotate(${second * 6}deg)`}} />
+            <MinuteNeedle $dark={$dark} style={{transform: `rotate(${minute * 6}deg)`}} />
         </AnalogueClockContainer>
     );
 }
